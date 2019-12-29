@@ -23,3 +23,5 @@
 /eureka-server/.mvn/wrapper/MavenWrapperDownloader.java
 /.idea/misc.xml
 /.idea/$PRODUCT_WORKSPACE_FILE$
+/.idea/modules.xml
+/.idea
