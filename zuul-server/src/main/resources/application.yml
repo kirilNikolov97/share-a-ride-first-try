@@ -1,0 +1,36 @@
+server:
+  port: 8762
+
+spring:
+  application:
+    name: zuul-server
+
+eureka:
+  client:
+    fetchRegistry: true
+    service-url:
+      default-zone: http://localhost:8761/eureka/
+
+zuul:
+  sensitiveHeaders: Cookie,Set-Cookie
+  ignoredServices: "*"
+  routes:
+    organization-service:
+      path: /organization/**
+      service-id: organization-service
+    authentication-service:
+      path: /authentication-service/**
+      service-id: authentication-service
+    car-service:
+      path: /car-service/**
+      service-id: car-service
+  host:
+    socket-timeout-millis: 1000000
+
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 1000000
