@@ -24,6 +24,9 @@ zuul:
     car-service:
       path: /car-service/**
       service-id: car-service
+    profile-service:
+      path: /profile-service/**
+      service-id: profile-service
   host:
     socket-timeout-millis: 1000000
 

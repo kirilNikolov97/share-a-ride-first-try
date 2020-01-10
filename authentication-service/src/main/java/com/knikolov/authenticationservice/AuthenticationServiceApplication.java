@@ -7,6 +7,7 @@ import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableAuthorizationServer;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableResourceServer;
 import org.springframework.security.oauth2.provider.OAuth2Authentication;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -14,10 +15,10 @@ import java.util.HashMap;
 import java.util.Map;
 
 @SpringBootApplication
-@RestController
-@EnableResourceServer
 @EnableAuthorizationServer
+@EnableResourceServer
 @EnableEurekaClient
+@RestController
 public class AuthenticationServiceApplication {
 
     @RequestMapping(value = { "/user" }, produces = "application/json")

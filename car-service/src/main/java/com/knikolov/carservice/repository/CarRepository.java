@@ -9,5 +9,5 @@ import java.util.Optional;
 
 @Repository
 public interface CarRepository extends JpaRepository<Car, Integer> {
-
+    List<Car> getAllByUserId(Integer userId);
 }

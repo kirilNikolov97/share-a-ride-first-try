@@ -17,6 +17,9 @@ import org.springframework.security.oauth2.provider.token.store.JwtAccessTokenCo
 import javax.sql.DataSource;
 import java.util.Arrays;
 
+/**
+ * Defines what applications and the user credentials the OAuth2 service knows about
+ */
 @Configuration
 public class JWTOAuth2Config extends AuthorizationServerConfigurerAdapter {
 
@@ -57,7 +60,9 @@ public class JWTOAuth2Config extends AuthorizationServerConfigurerAdapter {
     }
 
 
-
+    /**
+     * Defines which clients are going to registered your service. (application-level key names and secrets)
+     */
     @Override
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
 

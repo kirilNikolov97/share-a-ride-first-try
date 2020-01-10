@@ -16,10 +16,22 @@ public class WebSecurityConfigurer extends WebSecurityConfigurerAdapter {
     @Autowired
     private UserDetailsService userDetailsService;
 
+    /**
+     * Used by Spring Security to handle authentication. Used to configure the /oauth/token endpoint.
+     */
     @Override
     @Bean
     public AuthenticationManager authenticationManagerBean() throws Exception {
         return super.authenticationManagerBean();
+    }
+
+    /**
+     * Used by Spring Security to handle user information. Used to configure the /user endpoint.
+     */
+    @Override
+    @Bean
+    public UserDetailsService userDetailsServiceBean() throws Exception {
+        return super.userDetailsServiceBean();
     }
 
     @Bean
@@ -27,11 +39,7 @@ public class WebSecurityConfigurer extends WebSecurityConfigurerAdapter {
         return PasswordEncoderFactories.createDelegatingPasswordEncoder();
     }
 
-    @Override
-    @Bean
-    public UserDetailsService userDetailsServiceBean() throws Exception {
-        return super.userDetailsServiceBean();
-    }
+
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {

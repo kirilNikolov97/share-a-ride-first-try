@@ -15,7 +15,7 @@ spring:
   application:
     name: car-service
   datasource:
-    url: jdbc:mysql://localhost:3306/share_a_ride?createDatabaseIfNotExist=true&allowPublicKeyRetrieval=true&useSSL=false
+    url: jdbc:mysql://localhost:3306/share_a_ride_2?createDatabaseIfNotExist=true&allowPublicKeyRetrieval=true&useSSL=false
     driver-class-name: com.mysql.cj.jdbc.Driver
     initialization-mode: always
     username: root

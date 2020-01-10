@@ -1,0 +1,29 @@
+<h1>Profile page!</h1>
+<div class="container">
+  <div>Addresses:</div>
+  <ul class="list-group list-group-flush">
+    <li *ngFor="let address of this.user.addresses" class="list-group-item">
+      {{ address.district }},{{ address.city }},{{ address.street }}
+      <span *ngIf="address.additionalInfo">
+        , {{ address.additionalInfo }}
+      </span>
+    </li>
+  </ul>
+
+  <div>Email</div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">
+     {{this.user.email}}
+    </li>
+  </ul>
+
+  <div>Phone</div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item ">
+      {{this.user.phone}}
+      <button type="button" class="btn btn-warning">Edit</button>
+      <button type="button" class="btn btn-danger float-right">Delete</button>
+    </li>
+  </ul>
+
+</div>

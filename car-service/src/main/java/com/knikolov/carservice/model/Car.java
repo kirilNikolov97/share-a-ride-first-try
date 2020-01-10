@@ -10,8 +10,8 @@ public class Car {
     @Column(name = "car_id")
     @GeneratedValue
     Integer carId;
-    @Column(name = "username")
-    String username;
+    @Column(name = "user_id")
+    Integer userId;
     @Column(name = "manufacturer")
     String manufacturer;
     @Column(name = "model")
@@ -30,12 +30,12 @@ public class Car {
         return carId;
     }
 
-    public String getUsername() {
-        return username;
+    public Integer getUsername() {
+        return userId;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setUsername(Integer userId) {
+        this.userId = userId;
     }
 
     public String getManufacturer() {

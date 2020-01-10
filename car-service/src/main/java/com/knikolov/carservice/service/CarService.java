@@ -17,10 +17,12 @@ public class CarService {
     }
 
     public List<Car> getAllCars() {
-
         return carRepository.findAll();
-
     }
 
+    public List<Car> getCarsByUsername(String username) {
+        System.out.println(carRepository.getAllByUserId(1));
+        return carRepository.getAllByUserId(1);
+    }
 
 }
