@@ -1,0 +1,8 @@
+<h3>Menu</h3>
+<ul class="list-group">
+  <a href="/profile"><li class="list-group-item">Info</li></a>
+  <li class="list-group-item"><a href="/address">Address</a></li>
+  <li *ngIf="cookieService.get('isDriver') === 'true'" class="list-group-item"><a href="/cars">Cars</a></li>
+  <li class="list-group-item"><a href="/profile/route">Routes</a></li>
+  <li *ngIf="cookieService.get('isDriver') === 'false'" class="list-group-item"><a href="/become-a-driver">Become a Driver</a></li>
+</ul>

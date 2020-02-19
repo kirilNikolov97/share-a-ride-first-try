@@ -14,14 +14,18 @@ import java.util.Set;
 public class User implements UserDetails {
 
     private static final long serialVersionUID = 1L;
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Integer id;
     private String email;
     private String username;
     private String password;
     private String phone;
     private boolean enabled;
+
+    @Column(name = "is_driver")
+    private boolean isDriver;
 
     @Column(name = "account_locked")
     private boolean accountNonLocked;
@@ -38,11 +42,14 @@ public class User implements UserDetails {
             @JoinColumn(name = "role_id", referencedColumnName = "id") })
     private List<Role> roles;
 
-    @ManyToMany(fetch = FetchType.LAZY)
+    @ManyToMany(fetch = FetchType.LAZY, cascade = {CascadeType.ALL, CascadeType.REMOVE})
     @JoinTable(name = "user_address", joinColumns = {
             @JoinColumn(name = "user_id", referencedColumnName = "id") }, inverseJoinColumns = {
             @JoinColumn(name = "address_id", referencedColumnName = "address_id") })
     private List<Address> addresses;
+
+    @OneToMany(fetch=FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "userId")
+    private List<Car> cars;
 
     public User() {
     }
@@ -106,11 +113,11 @@ public class User implements UserDetails {
         return serialVersionUID;
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -160,5 +167,21 @@ public class User implements UserDetails {
 
     public void setPhone(String phone) {
         this.phone = phone;
+    }
+
+    public List<Car> getCars() {
+        return cars;
+    }
+
+    public void setCars(List<Car> cars) {
+        this.cars = cars;
+    }
+
+    public boolean isDriver() {
+        return isDriver;
+    }
+
+    public void setDriver(boolean driver) {
+        isDriver = driver;
     }
 }

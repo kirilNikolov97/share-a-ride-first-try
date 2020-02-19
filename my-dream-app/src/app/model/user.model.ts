@@ -1,11 +1,12 @@
 import {Address} from './address.model';
 import {Role} from './role.model';
+import {Car} from './car.model';
+
 
 export class User {
 
   id: number;
   username: string;
-  password: string;
   enabled: boolean;
   accountExpired: boolean;
   credentialExpired: boolean;
@@ -14,13 +15,14 @@ export class User {
   lastName: string;
   phone: string;
   email: string;
+  driver: boolean;
   roles: Role[];
   addresses: Address[];
+  cars: Car[];
 
   constructor() {
     this.id = null;
     this.username = null;
-    this.password = null;
     this.enabled = null;
     this.accountExpired = null;
     this.credentialExpired = null;
@@ -29,8 +31,10 @@ export class User {
     this.lastName = null;
     this.phone = null;
     this.email = null;
+    this.driver = null;
     this.roles = null;
     this.addresses = null;
+    this.cars = null;
   }
 
 }

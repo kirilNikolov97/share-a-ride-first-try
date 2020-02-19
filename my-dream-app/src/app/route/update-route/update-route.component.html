@@ -1,0 +1,39 @@
+<div class="container">
+  <form #routeForm="ngForm" (ngSubmit)="onSubmit(routeForm.value)">
+
+    <!-- Addresses -->
+    <div class="form-group">
+      <label for="where">From where:</label>
+      <div>
+        <select id="where" [(ngModel)]="selectedAddress" name="address">
+          <option value="" >Choose your address</option>
+          <option *ngFor="let address of addresses" [ngValue]="address" >
+            {{address.city + ', ' + address.district + ', ' + address.street}}
+          </option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Date -->
+    <div class="form-group">
+      <label for="when">When:</label>
+      <ejs-datetimepicker name="date" [(ngModel)]="date" id='when' placeholder='Select a datetime' format ='yyyy.MM.dd HH:mm'>
+      </ejs-datetimepicker>
+    </div>
+
+    <!-- Cars -->
+    <div class="form-group">
+      <label for="car">Which Car:</label>
+      <div>
+        <select id="car" [(ngModel)]="selectedCar" name="car">
+          <option name="car" value="">Choose your car</option>
+          <option *ngFor="let car of cars" [ngValue]="car" [selected]="car.id == selectedCar.id">
+            {{car.manufacturer + ', ' + car.model + ', ' + car.year}}
+          </option>
+        </select>
+      </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Update Route</button>
+  </form>
+</div>

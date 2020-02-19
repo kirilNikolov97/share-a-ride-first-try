@@ -27,6 +27,9 @@ zuul:
     profile-service:
       path: /profile-service/**
       service-id: profile-service
+    route-service:
+      path: /route-service/**
+      service-id: route-service
   host:
     socket-timeout-millis: 1000000
 

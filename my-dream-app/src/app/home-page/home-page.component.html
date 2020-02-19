@@ -1,0 +1,31 @@
+<div class="container">
+
+  <div class="row justify-content-center">
+    <h2 class="justify-content-center">Last Added Routes</h2>
+  </div>
+
+  <div class="row">
+    <table class="table">
+      <thead>
+      <tr>
+        <th scope="col">Date</th>
+        <th scope="col">Car</th>
+        <th scope="col">Driver</th>
+        <th scope="col">From Where</th>
+        <th scope="col">To Where</th>
+        <th scope="col">Save a Seat</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let route of this.lastRoutes">
+        <td>{{route.dateRoute}}</td>
+        <td>{{route.car.manufacturer + ' ' + route.car.model + ' ' + route.car.year}}</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td><button type="button" class="btn btn-primary"><a href="/route/{{route.id}}">{{route.id}}</a></button></td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

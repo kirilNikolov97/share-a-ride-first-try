@@ -1,24 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
-import {ApiService} from '../login/api.service';
 import { HttpClientModule } from '@angular/common/http';
+import {Car} from '../model/car.model';
+import {ApiCarService} from './api.car.service';
 
-export class Car {
-  carId: number;
-  manufacturer: string;
-  model: string;
-  seats: number;
-  year: number;
-  color: string;
-}
 
 export class MyJwt {
   access_token: string;
-}
-
-export class UserAndAuthorities {
-  user: string;
-  authorities: string[];
 }
 
 @Component({
@@ -30,12 +18,10 @@ export class CarsComponent implements OnInit {
 
   cars: Car[];
   private jwt: string;
-  myUser: UserAndAuthorities;
 
-  constructor(private router: Router, private apiService: ApiService) { }
+  constructor(private router: Router, private apiService: ApiCarService) { }
 
   ngOnInit() {
-    this.myUser = new UserAndAuthorities();
 
     this.jwt = window.sessionStorage.getItem('token');
     let result: MyJwt = JSON.parse(this.jwt);
@@ -58,4 +44,12 @@ export class CarsComponent implements OnInit {
     });
   }
 
+  deleteCar(carId) {
+    this.jwt = window.sessionStorage.getItem('token');
+    let result: MyJwt = JSON.parse(this.jwt);
+
+    this.apiService.deleteCar(result.access_token, carId).subscribe( res => {
+      console.log(res);
+    });
+  }
 }

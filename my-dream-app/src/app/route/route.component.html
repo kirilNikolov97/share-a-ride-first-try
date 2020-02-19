@@ -1,0 +1,115 @@
+<div class="container-fluid">
+  <div class="row">
+
+    <!-- Sidebar -->
+    <div class="col-md-2">
+      <app-sidebar></app-sidebar>
+    </div>
+
+    <!-- Routes -->
+    <div class="col-md-10">
+      <div class="row">
+        <h2 class="col-md-9">Routes:</h2>
+        <a *ngIf="cookieService.get('isDriver') === 'true'" class="list-group-item" href="/create-route" class="col-md-3"><button type="button" class="btn btn-primary float-right">+ Add New Route</button></a>
+      </div>
+
+      <div *ngIf="cookieService.get('isDriver') === 'true'">
+
+        <!-- Future Routes - Driver -->
+        <div class="row">
+          <h3>Future Routes as a Driver:</h3>
+        </div>
+        <div class="row">
+          <table class="table">
+            <thead>
+            <tr>
+              <th scope="col">id</th>
+              <th scope="col">Date</th>
+              <th scope="col">Car</th>
+              <th scope="col"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let route of this.futureRoutesAsDriver">
+              <th scope="row">{{route.id}}</th>
+              <td>{{route.dateRoute}}</td>
+              <td>{{route.car.manufacturer + ' ' + route.car.model + ' ' + route.car.year}}</td>
+              <td><a href="/update-route/{{route.id}}" class="col-md-3"><button type="button" class="btn btn-primary float-right">Edit</button></a></td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Last Routes - Driver -->
+        <div class="row">
+          <h3>Last Routes as a Driver:</h3>
+        </div>
+        <div class="row">
+          <table class="table">
+            <thead>
+            <tr>
+              <th scope="col">id</th>
+              <th scope="col">Date</th>
+              <th scope="col">Car</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let route of this.userRoutesAsDriver">
+              <th scope="row">{{route.id}}</th>
+              <td>{{route.dateRoute}}</td>
+              <td>{{route.car.manufacturer + ' ' + route.car.model + ' ' + route.car.year}}</td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Future Routes - Passenger -->
+      <div class="row">
+        <h3>Future Routes as a Passenger:</h3>
+      </div>
+      <div class="row">
+        <table class="table">
+          <thead>
+          <tr>
+            <th scope="col">id</th>
+            <th scope="col">Date</th>
+            <th scope="col">Car</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let route of this.futureRoutesAsPassenger">
+            <th scope="row">{{route.id}}</th>
+            <td>{{route.dateRoute}}</td>
+            <td>{{route.car.manufacturer + ' ' + route.car.model + ' ' + route.car.year}}</td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Last Routes - Passenger -->
+      <div class="row">
+        <h3>Last Routes as a Passenger:</h3>
+      </div>
+      <div class="row">
+        <table class="table">
+          <thead>
+          <tr>
+            <th scope="col">id</th>
+            <th scope="col">Date</th>
+            <th scope="col">Car</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let route of this.userRoutesAsPassenger">
+            <th scope="row">{{route.id}}</th>
+            <td>{{route.dateRoute}}</td>
+            <td>{{route.car.manufacturer + ' ' + route.car.model + ' ' + route.car.year}}</td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+  </div>
+</div>
